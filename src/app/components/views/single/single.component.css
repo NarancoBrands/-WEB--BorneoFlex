@@ -51,3 +51,9 @@
   margin-right: 10px;
 }
 /*# sourceMappingURL=single.component.css.map */
+
+/* Color al pasar el cursor por los iconos */
+.listing-features1 li:hover .icon {
+  background: rgb(0, 78, 89);
+  color: #ffffff;
+}
