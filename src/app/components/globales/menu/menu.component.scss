@@ -1,11 +1,12 @@
 .navbar {
     background: #004E59!important;
 }
+
 ul {
     margin-bottom: inherit!important;
 }
 
-.boton{
+.boton {
     margin-right: 40px;
     height: 45px;
     padding: 8px 20px;
@@ -18,21 +19,26 @@ ul {
     min-width: 170px;
 }
 
-.boton:hover{
+.boton:hover {
     color: black;
     background-color: skyblue;
 }
 
-.navegacion>li{
+.navegacion>li {
     list-style: none;
     margin-right: 40px;
     padding: 20px 0;
 }
 
-.navegacion>li>a{
+.navegacion>li>a {
     color: white;
 }
 
-.separacion{
+.separacion {
     padding: 10px;
+}
+
+.img {
+    height: auto;
+    width: 200px;
 }
