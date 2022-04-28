@@ -99,6 +99,7 @@ export class InicioComponent implements OnInit {
     this.contador = 0;
     this._propiedadService.getOwned().subscribe(
       result => {
+
         this.propiedades = result;
         this.propiedades.forEach(element => {
           if (element.ciudad == "Madrid") {
@@ -125,13 +126,16 @@ export class InicioComponent implements OnInit {
             this.contadorSevilla++;
           }
 
-          if (this.contador < 3) {
-            this.id = element.id;
-            this.propiedadesFiltradas[this.contador] = element;
-            this.setImg(element.id, element);
+          if (element.destacado === 'true') {
+            if (this.contador < 3) {
+              this.id = element.id;
+      
+              this.propiedadesFiltradas[this.contador] = element;
+              this.setImg(element.id, element);
+            }
+  
+            this.contador++;
           }
-
-          this.contador++;
         });
       },
       error => {

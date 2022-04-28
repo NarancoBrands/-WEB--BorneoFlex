@@ -185,6 +185,8 @@ export class ListComponent implements OnInit {
         this.propiedades.forEach(element => {
           if (element.ciudad == this.ciudad) {
             this.propiedadesFiltradas = this.propiedades.filter(x => x.ciudad == element.ciudad);
+            // Para que salgan por orden aleatorio cada vea que recargue
+            this.propiedadesFiltradas.sort((a, b) => 0.5 - Math.random());
             this.contador++;
           }
         });

@@ -8,5 +8,5 @@ export class Owned{
     public puesto_flexible:string, public tarifa:number,public tipo_propiedad:string, public imagen:string, public direccion:string,
     public barrio:string, public ciudad:string, public comunidad_autonoma:string, public telefono:String, public imgUrl: any, public lat: number, public lng: number,
     public precio_oficina_privada:number, public precio_oficina_fija:number, public precio_puesto_flexible:number, 
-    public rango_oficina_privada:string,public rango_oficina_fija:string, public rango_puesto_flexible:string){}
+    public rango_oficina_privada:string,public rango_oficina_fija:string, public rango_puesto_flexible:string, public destacado){}
 }

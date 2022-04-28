@@ -12,11 +12,10 @@
                                 <li><a (click)="cerrarMapa()">Cerrar mapa</a></li>
                             </ul>
 
-                            <div class="listing-search-form">
+                            <div class="listing-search-form" style="margin-bottom: 0px !important;">
                                 <form method="post" action="index.html">
                                     <div class="row">
-                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location"
-                                            *ngIf="ciudad=='Madrid'">
+                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location" *ngIf="ciudad=='Madrid'">
                                             <select id="op" [formControl]="selected">
                                                 <option value="null" id="opts">Zona</option>
                                                 <option value="Salamanca" id="opts">Salamanca</option>
@@ -34,8 +33,7 @@
                                                 <option value="Periferia" id="opts">Periferia</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location"
-                                            *ngIf="ciudad=='Barcelona'">
+                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location" *ngIf="ciudad=='Barcelona'">
                                             <select id="op" [formControl]="selected">
                                                 <option value="null" id="opts">Todos</option>
                                                 <option value="Centro Ciudad" id="opts">Centro ciudad</option>
@@ -47,8 +45,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location"
-                                            *ngIf="ciudad!='Barcelona' && ciudad!='Madrid'">
+                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location" *ngIf="ciudad!='Barcelona' && ciudad!='Madrid'">
                                             <select id="op" [formControl]="selected">
                                                 <option value="null" id="opts">Todos</option>
                                             </select>
@@ -72,7 +69,7 @@
                             <div class="checkbox-outer">
                                 <!--<h4>Etiquetas</h4>-->
                                 <ul class="checkboxes inline">
-                                   <!-- <li>
+                                    <!-- <li>
                                         <input id="check-a" type="checkbox" name="check" (change)="search()">
                                         <label for="check-a">Oficinas privadas</label>
                                     </li>
@@ -154,13 +151,19 @@
                                 </div>
                             </div>
 
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                                    </li>
+                                </ul>
+                            </nav>
+
                             <div class="row">
-                                <div class="listing-block col-lg-6 col-md-12"
-                                    *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 2, currentPage: page }">
+                                <div class="listing-block col-lg-6 col-md-12" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 2, currentPage: page }">
                                     <div class="inner-box">
                                         <div class="image-box">
-                                            <figure class="image"><img [src]="propiedad.imgUrl" alt=""
-                                                    class="imgTamano">
+                                            <figure class="image"><img [src]="propiedad.imgUrl" alt="" class="imgTamano">
                                             </figure>
                                             <div class="tags">
                                                 <!--<span>+{{propiedad.personas}} personas</span>
@@ -168,8 +171,7 @@
                                             </div>
                                         </div>
                                         <div class="lower-content tamano">
-                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg"
-                                                    alt="" /></div>
+                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div>
                                             <!--<div class="rating">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
@@ -185,48 +187,27 @@
                                             <div class="text">Desde: <b>{{propiedad.tarifa}} euros</b></div>
                                             <div class="text">Iconos servicios:
                                                 <ul class="listing-features1">
-                                                    <li *ngIf="propiedad.access=='true'"data-toggle="tooltip" data-placement="top" title="Acceso 24/7"><i
-                                                        class="fas fa-stopwatch icon"></i></li>
-                                                <li *ngIf="propiedad.mobiliario=='true'"data-toggle="tooltip" data-placement="top" title="Mobiliario"><i
-                                                        class="fas fa-building icon"></i></li>
-                                                <li *ngIf="propiedad.suministros=='true'"data-toggle="tooltip" data-placement="top" title="Suministros"><i
-                                                        class="fas fa-box icon"></i></li>
-                                                <li *ngIf="propiedad.networking=='true'"data-toggle="tooltip" data-placement="top" title="Networking"><i
-                                                        class="fas fa-ethernet icon"></i></li>
-                                                <li *ngIf="propiedad.skype=='true'"data-toggle="tooltip" data-placement="top" title="Skype"><i
-                                                        class="fab fa-skype icon"></i></li>
-                                                <li *ngIf="propiedad.guardabicis=='true'"data-toggle="tooltip" data-placement="top" title="Guardabicis"><i
-                                                        class="fas fa-bicycle icon"></i></li>
-                                                <li *ngIf="propiedad.cantina=='true'"data-toggle="tooltip" data-placement="top" title="Cantina"><i
-                                                        class="fas fa-glass-martini icon"></i></li>
-                                                <li *ngIf="propiedad.impresora=='true'"data-toggle="tooltip" data-placement="top" title="impresora"><i
-                                                        class="fas fa-print icon"></i></li>
-                                                <li *ngIf="propiedad.gimnasio=='true'"data-toggle="tooltip" data-placement="top" title="Gimnasio"><i
-                                                        class="fas fa-dumbbell icon"></i></li>
-                                                <li *ngIf="propiedad.salas_reuniones=='true'"data-toggle="tooltip" data-placement="top" title="Salas de reuniones"><i
-                                                        class="fas fa-handshake icon"></i></li>
-                                                <li *ngIf="propiedad.reception=='true'"data-toggle="tooltip" data-placement="top" title="Recepción"><i
-                                                        class="fas fa-concierge-bell icon"></i></li>
-                                                <li *ngIf="propiedad.eventos_network=='true'"data-toggle="tooltip" data-placement="top" title="Eventos-network"><i
-                                                        class="fas fa-calendar icon"></i></li>
-                                                <li *ngIf="propiedad.terraza=='true'"data-toggle="tooltip" data-placement="top" title="Terraza"><i
-                                                        class="fas fa-cocktail icon"></i></li>
-                                                <li *ngIf="propiedad.cafe_relax=='true'"data-toggle="tooltip" data-placement="top" title="Zona café/relax"><i
-                                                        class="fas fa-coffee icon"></i></li>
-                                                <li *ngIf="propiedad.seguridad=='true'"data-toggle="tooltip" data-placement="top" title="Seguridad 24 horas"><i
-                                                        class="fas fa-shield-alt icon"></i></li>
-                                                <li *ngIf="propiedad.limpieza=='true'"data-toggle="tooltip" data-placement="top" title="Limpieza"><i
-                                                        class="fas fa-soap icon"></i></li>
-                                                <li *ngIf="propiedad.cer_energetica=='true'"data-toggle="tooltip" data-placement="top" title="Certificado energético"><i
-                                                        class="fas fa-stamp icon"></i></li>
-                                                <li *ngIf="propiedad.paqueteria=='true'"data-toggle="tooltip" data-placement="top" title="Paquetería"><i
-                                                        class="fas fa-box icon"></i></li>
-                                                <li *ngIf="propiedad.parking=='true'"data-toggle="tooltip" data-placement="top" title="Parking"><i
-                                                        class="fas fa-parking icon"></i></li>
-                                                <li *ngIf="propiedad.wifi=='true'"data-toggle="tooltip" data-placement="top" title="Wifi"><i 
-                                                    class="fas fa-wifi icon"></i></li>
-                                                <li *ngIf="propiedad.coworking=='true'"data-toggle="tooltip" data-placement="top" title="Coworking"><i
-                                                        class="far fa-building icon"></i></li>
+                                                    <li *ngIf="propiedad.access=='true'" data-toggle="tooltip" data-placement="top" title="Acceso 24/7"><i class="fas fa-stopwatch icon"></i></li>
+                                                    <li *ngIf="propiedad.mobiliario=='true'" data-toggle="tooltip" data-placement="top" title="Mobiliario"><i class="fas fa-building icon"></i></li>
+                                                    <li *ngIf="propiedad.suministros=='true'" data-toggle="tooltip" data-placement="top" title="Suministros"><i class="fas fa-box icon"></i></li>
+                                                    <li *ngIf="propiedad.networking=='true'" data-toggle="tooltip" data-placement="top" title="Networking"><i class="fas fa-ethernet icon"></i></li>
+                                                    <li *ngIf="propiedad.skype=='true'" data-toggle="tooltip" data-placement="top" title="Skype"><i class="fab fa-skype icon"></i></li>
+                                                    <li *ngIf="propiedad.guardabicis=='true'" data-toggle="tooltip" data-placement="top" title="Guardabicis"><i class="fas fa-bicycle icon"></i></li>
+                                                    <li *ngIf="propiedad.cantina=='true'" data-toggle="tooltip" data-placement="top" title="Cantina"><i class="fas fa-glass-martini icon"></i></li>
+                                                    <li *ngIf="propiedad.impresora=='true'" data-toggle="tooltip" data-placement="top" title="impresora"><i class="fas fa-print icon"></i></li>
+                                                    <li *ngIf="propiedad.gimnasio=='true'" data-toggle="tooltip" data-placement="top" title="Gimnasio"><i class="fas fa-dumbbell icon"></i></li>
+                                                    <li *ngIf="propiedad.salas_reuniones=='true'" data-toggle="tooltip" data-placement="top" title="Salas de reuniones"><i class="fas fa-handshake icon"></i></li>
+                                                    <li *ngIf="propiedad.reception=='true'" data-toggle="tooltip" data-placement="top" title="Recepción"><i class="fas fa-concierge-bell icon"></i></li>
+                                                    <li *ngIf="propiedad.eventos_network=='true'" data-toggle="tooltip" data-placement="top" title="Eventos-network"><i class="fas fa-calendar icon"></i></li>
+                                                    <li *ngIf="propiedad.terraza=='true'" data-toggle="tooltip" data-placement="top" title="Terraza"><i class="fas fa-cocktail icon"></i></li>
+                                                    <li *ngIf="propiedad.cafe_relax=='true'" data-toggle="tooltip" data-placement="top" title="Zona café/relax"><i class="fas fa-coffee icon"></i></li>
+                                                    <li *ngIf="propiedad.seguridad=='true'" data-toggle="tooltip" data-placement="top" title="Seguridad 24 horas"><i class="fas fa-shield-alt icon"></i></li>
+                                                    <li *ngIf="propiedad.limpieza=='true'" data-toggle="tooltip" data-placement="top" title="Limpieza"><i class="fas fa-soap icon"></i></li>
+                                                    <li *ngIf="propiedad.cer_energetica=='true'" data-toggle="tooltip" data-placement="top" title="Certificado energético"><i class="fas fa-stamp icon"></i></li>
+                                                    <li *ngIf="propiedad.paqueteria=='true'" data-toggle="tooltip" data-placement="top" title="Paquetería"><i class="fas fa-box icon"></i></li>
+                                                    <li *ngIf="propiedad.parking=='true'" data-toggle="tooltip" data-placement="top" title="Parking"><i class="fas fa-parking icon"></i></li>
+                                                    <li *ngIf="propiedad.wifi=='true'" data-toggle="tooltip" data-placement="top" title="Wifi"><i class="fas fa-wifi icon"></i></li>
+                                                    <li *ngIf="propiedad.coworking=='true'" data-toggle="tooltip" data-placement="top" title="Coworking"><i class="far fa-building icon"></i></li>
                                                 </ul>
                                             </div>
                                             <ul class="info listaColocacion">
@@ -240,23 +221,21 @@
                                 </div>
                             </div>
 
-                            <nav>
+                            <!-- <nav>
                                 <ul>
                                     <li>
                                         <pagination-controls (pageChange)="page = $event"></pagination-controls>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
 
                     <!-------------------------------------GOOGLE MAPS------------------------------------------------------------>
                     <!--<div class="col-6">-->
                     <div [ngClass]="{'col-6': !isMobile(), 'col-12 -map-mobile': isMobile()}">
-                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId"
-                            [styles]='styles' (mapReady)="mapReadyHandler($event)">
-                            <agm-marker *ngFor="let marker of markers" [latitude]="marker.position.lat"
-                                [longitude]="marker.position.lng" [label]="marker.label" [zoom]="zoom">
+                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId" [styles]='styles' (mapReady)="mapReadyHandler($event)">
+                            <agm-marker *ngFor="let marker of markers" [latitude]="marker.position.lat" [longitude]="marker.position.lng" [label]="marker.label" [zoom]="zoom">
                                 <agm-info-window><span style="cursor: pointer;" (click)='redirectToPage(marker.idProp)'>{{marker.nameProp}}</span></agm-info-window>
                             </agm-marker>
                         </agm-map>
@@ -277,8 +256,7 @@
                             <div class="listing-search-form">
                                 <form method="post" action="index.html">
                                     <div class="row">
-                                        <div class="form-group col-lg-2 col-md-4 col-sm-12 location"
-                                            *ngIf="ciudad=='Madrid'">
+                                        <div class="form-group col-lg-2 col-md-4 col-sm-12 location" *ngIf="ciudad=='Madrid'">
                                             <select id="op" [formControl]="selected">
                                                 <option value="null" id="opts">Zona</option>
                                                 <option value="Salamanca" id="opts">Salamanca</option>
@@ -296,8 +274,7 @@
                                                 <option value="Periferia" id="opts">Periferia</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-lg-2 col-md-4 col-sm-12 location"
-                                            *ngIf="ciudad=='Barcelona'">
+                                        <div class="form-group col-lg-2 col-md-4 col-sm-12 location" *ngIf="ciudad=='Barcelona'">
                                             <select id="op" [formControl]="selected">
                                                 <option value="null" id="opts">Zona</option>
                                                 <option value="Centro Ciudad" id="opts">Centro ciudad</option>
@@ -309,8 +286,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group col-lg-2 col-md-4 col-sm-12 location"
-                                            *ngIf="ciudad!='Barcelona' && ciudad!='Madrid'">
+                                        <div class="form-group col-lg-2 col-md-4 col-sm-12 location" *ngIf="ciudad!='Barcelona' && ciudad!='Madrid'">
                                             <select id="op" [formControl]="selected">
                                                 <option value="null" id="opts">Todos</option>
                                             </select>
@@ -357,12 +333,10 @@
                             </div>
 
                             <div class="row">
-                                <div class="listing-block col-lg-3 col-md-6"
-                                    *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 8, currentPage: page }">
+                                <div class="listing-block col-lg-3 col-md-6" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 8, currentPage: page }">
                                     <div class="inner-box">
                                         <div class="image-box">
-                                            <figure class="image"><img [src]="propiedad.imgUrl" alt=""
-                                                    class="imgTamano">
+                                            <figure class="image"><img [src]="propiedad.imgUrl" alt="" class="imgTamano">
                                             </figure>
                                             <div class="tags">
                                                 <!--<span>+{{propiedad.personas}} personas</span>
@@ -370,8 +344,7 @@
                                             </div>
                                         </div>
                                         <div class="lower-content tamano">
-                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg"
-                                                    alt="" /></div>
+                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div>
                                             <!--<div class="rating">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
@@ -387,48 +360,28 @@
                                             <div class="text">Desde: <b>{{propiedad.tarifa}} euros</b></div>
                                             <div class="text">Iconos servicios:
                                                 <ul class="listing-features1">
-                                                    <li *ngIf="propiedad.access=='true'"><i
-                                                            class="fas fa-stopwatch icon"></i></li>
-                                                    <li *ngIf="propiedad.mobiliario=='true'"><i
-                                                            class="fas fa-building icon"></i></li>
-                                                    <li *ngIf="propiedad.suministros=='true'"><i
-                                                            class="fas fa-box icon"></i></li>
-                                                    <li *ngIf="propiedad.networking=='true'"><i
-                                                            class="fas fa-ethernet icon"></i></li>
-                                                    <li *ngIf="propiedad.skype=='true'"><i
-                                                            class="fab fa-skype icon"></i></li>
-                                                    <li *ngIf="propiedad.guardabicis=='true'"><i
-                                                            class="fas fa-bicycle icon"></i></li>
-                                                    <li *ngIf="propiedad.cantina=='true'"><i
-                                                            class="fas fa-glass-martini icon"></i></li>
-                                                    <li *ngIf="propiedad.impresora=='true'"><i
-                                                            class="fas fa-print icon"></i></li>
-                                                    <li *ngIf="propiedad.gimnasio=='true'"><i
-                                                            class="fas fa-dumbbell icon"></i></li>
-                                                    <li *ngIf="propiedad.salas_reuniones=='true'"><i
-                                                            class="fas fa-handshake icon"></i></li>
-                                                    <li *ngIf="propiedad.reception=='true'"><i
-                                                            class="fas fa-concierge-bell icon"></i></li>
-                                                    <li *ngIf="propiedad.eventos_network=='true'"><i
-                                                            class="fas fa-calendar icon"></i></li>
-                                                    <li *ngIf="propiedad.terraza=='true'"><i
-                                                            class="fas fa-cocktail icon"></i></li>
-                                                    <li *ngIf="propiedad.cafe_relax=='true'"><i
-                                                            class="fas fa-coffee icon"></i></li>
-                                                    <li *ngIf="propiedad.seguridad=='true'"><i
-                                                            class="fas fa-shield-alt icon"></i></li>
-                                                    <li *ngIf="propiedad.limpieza=='true'"><i
-                                                            class="fas fa-soap icon"></i></li>
-                                                    <li *ngIf="propiedad.cer_energetica=='true'"><i
-                                                            class="fas fa-stamp icon"></i></li>
-                                                    <li *ngIf="propiedad.paqueteria=='true'"><i
-                                                            class="fas fa-box icon"></i></li>
-                                                    <li *ngIf="propiedad.parking=='true'"><i
-                                                            class="fas fa-parking icon"></i></li>
+                                                    <li *ngIf="propiedad.access=='true'"><i class="fas fa-stopwatch icon"></i></li>
+                                                    <li *ngIf="propiedad.mobiliario=='true'"><i class="fas fa-building icon"></i></li>
+                                                    <li *ngIf="propiedad.suministros=='true'"><i class="fas fa-box icon"></i></li>
+                                                    <li *ngIf="propiedad.networking=='true'"><i class="fas fa-ethernet icon"></i></li>
+                                                    <li *ngIf="propiedad.skype=='true'"><i class="fab fa-skype icon"></i></li>
+                                                    <li *ngIf="propiedad.guardabicis=='true'"><i class="fas fa-bicycle icon"></i></li>
+                                                    <li *ngIf="propiedad.cantina=='true'"><i class="fas fa-glass-martini icon"></i></li>
+                                                    <li *ngIf="propiedad.impresora=='true'"><i class="fas fa-print icon"></i></li>
+                                                    <li *ngIf="propiedad.gimnasio=='true'"><i class="fas fa-dumbbell icon"></i></li>
+                                                    <li *ngIf="propiedad.salas_reuniones=='true'"><i class="fas fa-handshake icon"></i></li>
+                                                    <li *ngIf="propiedad.reception=='true'"><i class="fas fa-concierge-bell icon"></i></li>
+                                                    <li *ngIf="propiedad.eventos_network=='true'"><i class="fas fa-calendar icon"></i></li>
+                                                    <li *ngIf="propiedad.terraza=='true'"><i class="fas fa-cocktail icon"></i></li>
+                                                    <li *ngIf="propiedad.cafe_relax=='true'"><i class="fas fa-coffee icon"></i></li>
+                                                    <li *ngIf="propiedad.seguridad=='true'"><i class="fas fa-shield-alt icon"></i></li>
+                                                    <li *ngIf="propiedad.limpieza=='true'"><i class="fas fa-soap icon"></i></li>
+                                                    <li *ngIf="propiedad.cer_energetica=='true'"><i class="fas fa-stamp icon"></i></li>
+                                                    <li *ngIf="propiedad.paqueteria=='true'"><i class="fas fa-box icon"></i></li>
+                                                    <li *ngIf="propiedad.parking=='true'"><i class="fas fa-parking icon"></i></li>
                                                     <li *ngIf="propiedad.wifi=='true'"><i class="fas fa-wifi icon"></i>
                                                     </li>
-                                                    <li *ngIf="propiedad.coworking=='true'"><i
-                                                            class="far fa-building icon"></i></li>
+                                                    <li *ngIf="propiedad.coworking=='true'"><i class="far fa-building icon"></i></li>
                                                 </ul>
                                             </div>
                                             <ul class="info listaColocacion">

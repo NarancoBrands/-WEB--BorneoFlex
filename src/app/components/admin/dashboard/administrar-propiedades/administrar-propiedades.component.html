@@ -16,16 +16,14 @@
                     <div class="uploading-outer">
                         <div class="uploadButton">
                             <!--INPUT DE LAS FOTOS-->
-                            <input class="uploadButton-input" type="file" (change)="fileChangeEvent($event)" id="upload"
-                                multiple />
+                            <input class="uploadButton-input" type="file" (change)="fileChangeEvent($event)" id="upload" multiple />
 
                             <label class="uploadButton-button" for="upload">Subir foto de
                                 propiedad</label>
                             <span class="uploadButton-file-name"></span>
 
                             <!--INPUT DE LAS FOTOS DESTACADAS-->
-                            <input class="uploadButton-input" type="file" (change)="fileChangeEvent1($event)"
-                                id="upload1" />
+                            <input class="uploadButton-input" type="file" (change)="fileChangeEvent1($event)" id="upload1" />
 
                             <label class="uploadButton-button" for="upload1">Subir foto destacada</label>
                             <span class="uploadButton-file-name"></span>
@@ -34,8 +32,7 @@
                         <div *ngIf="imagenesguardadas!=0" class="my-2">
                             <h5>IMAGENES AÑADIDAS:</h5>
                             <div *ngFor="let imagenes of imagenesComprobar" class="d-inline">
-                                <img src="http://borneoflex.es/borneo/uploads/{{imagenes.imagen}}" alt=""
-                                    class="previsualizar ml-2" *ngIf="imagenes.destacado==0">
+                                <img src="http://borneoflex.es/borneo/uploads/{{imagenes.imagen}}" alt="" class="previsualizar ml-2" *ngIf="imagenes.destacado==0">
                                 <button type="button" class="posicion1" (click)="borrarGuardadas(imagenes.id)"><i
                                         class="far fa-times-circle" *ngIf="imagenes.destacado==0"></i></button>
                             </div>
@@ -44,8 +41,7 @@
                         <div *ngIf="imagenesguardadas!=0" class="my-2">
                             <h5>IMAGEN DESTACADA</h5>
                             <div *ngFor="let imagenes of imagenesComprobar" class="d-inline">
-                                <img src="http://borneoflex.es/borneo/uploads/{{imagenes.imagen}}" alt=""
-                                    class="previsualizar ml-2" *ngIf="imagenes.destacado==1">
+                                <img src="http://borneoflex.es/borneo/uploads/{{imagenes.imagen}}" alt="" class="previsualizar ml-2" *ngIf="imagenes.destacado==1">
                                 <button type="button" class="posicion1" (click)="borrarGuardadas(imagenes.id)"><i
                                         class="far fa-times-circle" *ngIf="imagenes.destacado==1"></i></button>
                             </div>
@@ -76,32 +72,28 @@
 
                             <div class="col-lg-3 col-md-4 col-12">
                                 <label>Nombre propiedad</label>
-                                <input type="text" formControlName="nombre" class="form-control"
-                                    placeholder="Nombre propiedad" required>
+                                <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre propiedad" required>
                                 <small *ngIf="nombreNoValido" class="text-danger">Sin espacios ni caracteres especiales,
                                     mínimo 3 letras.</small>
                             </div>
 
                             <div class="col-lg-2 col-md-4 col-12">
                                 <label>Tarifa</label>
-                                <input type="text" formControlName="tarifa" class="form-control" placeholder="Tarifa"
-                                    required>
+                                <input type="text" formControlName="tarifa" class="form-control" placeholder="Tarifa" required>
                                 <small *ngIf="tarifaNoValido" class="text-danger">Sin letras ni caracteres
                                     especiales</small>
                             </div>
 
                             <div class="col-lg-2 col-md-4 col-12">
                                 <label>Capacidad</label>
-                                <input type="text" formControlName="personas" class="form-control"
-                                    placeholder="Capacidad" required>
+                                <input type="text" formControlName="personas" class="form-control" placeholder="Capacidad" required>
                                 <small *ngIf="personasNoValido" class="text-danger">Sin letras ni caracteres
                                     especiales</small>
                             </div>
 
                             <div class="col-lg-4 col-md-6 col-12">
                                 <label>Telefono</label>
-                                <input type="text" formControlName="telefono" class="form-control"
-                                    placeholder="Telefono" required>
+                                <input type="text" formControlName="telefono" class="form-control" placeholder="Telefono" required>
                                 <small *ngIf="telefonoNoValido" class="text-danger">solo numeros y en total nueve
                                     numeros</small>
                             </div>
@@ -208,8 +200,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" formControlName="oficina_privada"
-                                        (change)="datosPrivada()">
+                                    <input class="form-check-input" type="checkbox" formControlName="oficina_privada" (change)="datosPrivada()">
                                     <label class="form-check-label">Oficina privada</label>
 
                                     <div *ngIf="privada==true">
@@ -228,25 +219,21 @@
                                             </div>-->
                                             <div class="col-md-6 col-12">
                                                 <label>Precio</label>
-                                                <input type="text" formControlName="precio_oficina_privada"
-                                                    class="form-control" placeholder="Precio para oficina privada"
-                                                    required>
+                                                <input type="text" formControlName="precio_oficina_privada" class="form-control" placeholder="Precio para oficina privada" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" formControlName="puesto_fijo"
-                                        (change)="datosFija()">
+                                    <input class="form-check-input" type="checkbox" formControlName="puesto_fijo" (change)="datosFija()">
                                     <label class="form-check-label">Puesto fijo en espacio abierto</label>
 
                                     <div *ngIf="fija==true">
                                         <div class="row">
                                             <div class="col-md-6 col-12">
                                                 <label>Rango de personas en puesto fijo</label>
-                                                <select class="custom-select mr-sm-2"
-                                                    formControlName="rango_oficina_fija">
+                                                <select class="custom-select mr-sm-2" formControlName="rango_oficina_fija">
                                                     <option selected>Escoger...</option>
                                                     <option value="1-5">1-5</option>
                                                     <option value="1-10">1-10</option>
@@ -257,9 +244,7 @@
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <label>Precio</label>
-                                                <input type="text" formControlName="precio_oficina_fija"
-                                                    class="form-control"
-                                                    placeholder="Precio para puesto fijo en espacio abierto" required>
+                                                <input type="text" formControlName="precio_oficina_fija" class="form-control" placeholder="Precio para puesto fijo en espacio abierto" required>
                                             </div>
                                         </div>
 
@@ -267,16 +252,14 @@
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" formControlName="puesto_flexible"
-                                        (change)="datosFlexible()">
+                                    <input class="form-check-input" type="checkbox" formControlName="puesto_flexible" (change)="datosFlexible()">
                                     <label class="form-check-label">Puesto flexible no fijo</label>
 
                                     <div *ngIf="flexible==true">
                                         <div class="row">
                                             <div class="col-md-6 col-12">
                                                 <label>Rango de personas en puesto flexible</label>
-                                                <select class="custom-select mr-sm-2"
-                                                    formControlName="rango_puesto_flexible">
+                                                <select class="custom-select mr-sm-2" formControlName="rango_puesto_flexible">
                                                     <option selected>Escoger...</option>
                                                     <option value="1-5">1-5</option>
                                                     <option value="1-10">1-10</option>
@@ -287,21 +270,29 @@
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <label>Precio</label>
-                                                <input type="text" formControlName="precio_puesto_flexible"
-                                                    class="form-control"
-                                                    placeholder="Precio para puesto flexible no fijo" required>
+                                                <input type="text" formControlName="precio_puesto_flexible" class="form-control" placeholder="Precio para puesto flexible no fijo" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" formControlName="destacado">
+                                    <label class="form-check-label">Destacado</label>
+
+                                </div>
+
+
+
+
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-4 col-md-6 col-12">
                                 <label>Calle</label>
-                                <input type="text" #search formControlName="direccion" class="form-control"
-                                    placeholder="Dirección" required>
+                                <input type="text" #search formControlName="direccion" class="form-control" placeholder="Dirección" required>
                             </div>
 
                             <div class="col-lg-2 col-md-6 col-12">
@@ -364,8 +355,7 @@
 
                             <div class="col-lg-2 col-md-4 col-12">
                                 <label>Ciudad</label>
-                                <select class="custom-select mr-sm-2" formControlName="ciudad"
-                                    (change)="cambiarBarrios()" id="ciudad">
+                                <select class="custom-select mr-sm-2" formControlName="ciudad" (change)="cambiarBarrios()" id="ciudad">
                                     <option value='Barcelona'>Barcelona</option>
                                     <option value='Madrid'>Madrid</option>
                                     <option value='Oviedo'>Oviedo</option>
@@ -397,8 +387,7 @@
 
                         <div class="row mb-10">
                             <div class="col-lg-6 col-12">
-                                <button class="theme-btn btn-style-two" type="submit" [disabled]="!propertyForm.valid"
-                                    name="submit-form" id="submit">Enviar</button>
+                                <button class="theme-btn btn-style-two" type="submit" [disabled]="!propertyForm.valid" name="submit-form" id="submit">Enviar</button>
                                 <small *ngIf="!propertyForm.valid" class="text-danger font-weight-bold">Por favor
                                     rellene correctamente el formulario*</small>
                             </div>

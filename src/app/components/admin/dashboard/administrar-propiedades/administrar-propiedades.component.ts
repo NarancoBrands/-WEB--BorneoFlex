@@ -79,6 +79,7 @@ export class AdministrarPropiedadesComponent implements OnInit {
     rango_oficina_privada: new FormControl(''),
     rango_oficina_fija: new FormControl(''),
     rango_puesto_flexible: new FormControl(''),
+    destacado: new FormControl(false),
   });
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService,
@@ -361,6 +362,11 @@ export class AdministrarPropiedadesComponent implements OnInit {
       this.propertyForm.get('puesto_flexible').setValue("true");
     } else {
       this.propertyForm.get('puesto_flexible').setValue("false");
+    }
+    if (this.propertyForm.get('destacado').value == true) {
+      this.propertyForm.get('destacado').setValue("true");
+    } else {
+      this.propertyForm.get('destacado').setValue("false");
     }
 
     this.propertyForm.value.lat = this.locationInfo.lat;

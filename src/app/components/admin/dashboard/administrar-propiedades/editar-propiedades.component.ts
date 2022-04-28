@@ -127,6 +127,7 @@ export class EditarPropiedadesComponent implements OnInit {
         rango_oficina_privada: new FormControl(''),
         rango_oficina_fija: new FormControl(''),
         rango_puesto_flexible: new FormControl(''),
+        destacado: new FormControl(false)
     });
 
     constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService,
@@ -271,6 +272,11 @@ export class EditarPropiedadesComponent implements OnInit {
                         } else {
                             this.propertyForm.get('puesto_flexible').setValue(false);
                         }
+                        if (this.propiedad[i].destacado == "true") {
+                            this.propertyForm.get('destacado').setValue(true);
+                        } else {
+                            this.propertyForm.get('destacado').setValue(false);
+                        }
 
                         this.propertyForm.get('tarifa').setValue(this.propiedad[i].tarifa);
                         this.propertyForm.get('tipo_propiedad').setValue(this.propiedad[i].tipo_propiedad);
@@ -340,7 +346,7 @@ export class EditarPropiedadesComponent implements OnInit {
     listarImagenesCompletas() {
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
-            this._propiedadService.listadoCompletoImagenes(id).subscribe(
+            this._propiedadService.listarimagenes(id).subscribe(
                 response => {
                     this.imagenesComprobar = response;
 
@@ -661,6 +667,11 @@ export class EditarPropiedadesComponent implements OnInit {
             } else {
                 this.propertyForm.get('puesto_flexible').setValue("false");
             }
+            if (this.propertyForm.get('destacado').value == true) {
+                this.propertyForm.get('destacado').setValue("true");
+              } else {
+                this.propertyForm.get('destacado').setValue("false");
+              }
 
             if (this.locationInfo && this.locationInfo.lat) {
                 this.propertyForm.value.lat = this.locationInfo.lat;
