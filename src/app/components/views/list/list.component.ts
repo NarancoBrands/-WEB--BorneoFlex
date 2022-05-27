@@ -21,6 +21,7 @@ export class ListComponent implements OnInit {
   public opc: any;
   public comunidad;
   public page: number = 1;
+  public pageOpen: number = 1;
   public mostrarTextoEntero = false;
   public arrayBooleanos: Array<Boolean> = [];
   public arrayComprobador: Array<number> = [];
@@ -180,6 +181,7 @@ export class ListComponent implements OnInit {
     //es necesario porque lo llamamos al ngoninit asi cuando se entra a esta pagina por primera vez ya esta imprimiendo las propiedades que queremos
     this._propiedadService.getOwned().subscribe(
       result => {
+        // console.log(result);
         this.propiedades = result;
         this.ciudad = this._route.snapshot.params['ciudad'];
         this.propiedades.forEach(element => {
@@ -208,7 +210,7 @@ export class ListComponent implements OnInit {
   }
   setMarkers(): void {
     this.markers = this.propiedadesFiltradas.map(prop => {
-      console.log(prop)
+      // console.log(prop)
       if (prop.lat && prop.lng) {
         return {
           position: {
@@ -243,11 +245,13 @@ export class ListComponent implements OnInit {
               }
             }
 
-            if (this.contador1 == images.length && images[this.contador1].destacado != 1) {
-              prop.imgUrl = urlDefault;
-            } else {
-              prop.imgUrl = 'http://borneoflex.es/borneo/uploads/' + images[this.contador1].imagen.replace('[', '').replace(']', '').replace('"', '').replace('"', '');
-              console.log(images.imgUrl);
+            if(images[this.contador1]?.destacado){
+              if (this.contador1 == images.length && images[this.contador1].destacado != 1) {
+                prop.imgUrl = urlDefault;
+              } else {
+                prop.imgUrl = 'https://borneoflex.es/borneo/uploads/' + images[this.contador1].imagen.replace('[', '').replace(']', '').replace('"', '').replace('"', '');
+                // console.log(images.imgUrl);
+              }
             }
           }
 
@@ -287,5 +291,9 @@ export class ListComponent implements OnInit {
     this.getOwned();
     //obligamos a que al entrar por primera vez en la pagina el select que se vea por primera vez sea el de todos
     this.opc = "null";
+  }
+
+  prueba(p) {
+    console.log(p);
   }
 }

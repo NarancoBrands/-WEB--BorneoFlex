@@ -162,7 +162,7 @@
                             <div class="row">
                                 <div class="listing-block col-lg-6 col-md-12" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 2, currentPage: page }">
                                     <div class="inner-box">
-                                        <div class="image-box">
+                                        <div class="image-box" (click)="prueba(propiedad)">
                                             <figure class="image"><img [src]="propiedad.imgUrl" alt="" class="imgTamano">
                                             </figure>
                                             <div class="tags">
@@ -171,7 +171,7 @@
                                             </div>
                                         </div>
                                         <div class="lower-content tamano">
-                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div>
+                                            <!-- <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div> -->
                                             <!--<div class="rating">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
@@ -332,8 +332,16 @@
                                 </div>
                             </div>
 
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <pagination-controls (pageChange)="pageOpen = $event"></pagination-controls>
+                                    </li>
+                                </ul>
+                            </nav>
+
                             <div class="row">
-                                <div class="listing-block col-lg-3 col-md-6" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 8, currentPage: page }">
+                                <div class="listing-block col-lg-3 col-md-6" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 8, currentPage: pageOpen }">
                                     <div class="inner-box">
                                         <div class="image-box">
                                             <figure class="image"><img [src]="propiedad.imgUrl" alt="" class="imgTamano">
@@ -344,7 +352,7 @@
                                             </div>
                                         </div>
                                         <div class="lower-content tamano">
-                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div>
+                                            <!-- <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div> -->
                                             <!--<div class="rating">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
@@ -395,13 +403,13 @@
                                 </div>
                             </div>
 
-                            <nav>
+                            <!-- <nav>
                                 <ul>
                                     <li>
                                         <pagination-controls (pageChange)="page = $event"></pagination-controls>
                                     </li>
                                 </ul>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                 </div>
